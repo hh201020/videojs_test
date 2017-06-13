@@ -42,69 +42,30 @@
   </video>
 
   <script>
+    function examplePlugin(options) {
+
+      this.on('ended', function () {
+        console.log('ended ' + options);
+      });
+
+      this.on('playing', function () {
+        videojs.log('playback began!');
+      });
+    }
+    videojs.registerPlugin('examplePlugin', examplePlugin);
+    
     var vid = document.getElementById("vid1");
     var player = videojs(vid);
 
+    var  showPlugin = 'show plugin test';
+    player.examplePlugin(showPlugin);
+
     player.on('ready', function () {
-      var bufferedTimeRange = player.buffered();
 
-      // number of different ranges of time have been buffered.
-      // Usually 1
-      var numberOfRanges = bufferedTimeRange.length;
-      console.log('Player numberOfRanges ? ' + numberOfRanges);
-
-      // Time in seconds when the first range starts.
-      // Usually 0
-      var firstRangeStart = bufferedTimeRange.start(0);
-
-      // Time in seconds when the first range ends
-      var firstRangeEnd = bufferedTimeRange.end(0);
-
-      // Length in seconds of the first time range
-      var firstRangeLength = firstRangeEnd - firstRangeStart;
-      console.log('Player firstRangeLength ? ' + firstRangeLength);
-      console.log('Player bufferedPercent ? ' + player.bufferedPercent());
-
-      var howLoudIsIt = player.volume();
-      player.volume(0.5);
-
-      player.currentTime(30);
+      player.currentTime(40);
       player.play();
-      console.log('Player is current time ? ' + player.currentTime());
-      console.log('Player has duration ? ' + player.duration());         // duration has value only when video starts playing.
-      console.log(player.remainingTime());                               // duration minus currentTime
-
-      stateChange(-1);
-      //      waitSeconds(3000);
-      //      player.pause();
-
     })
 
-    player.on('ended', function () {
-      this.dispose();
-    });
-
-    function stateChange(newState) {
-      setTimeout(function () {
-        if (newState == -1) {
-          console.log('Player is current time ? ' + player.currentTime());
-          console.log('Player has duration ? ' + player.duration());
-          console.log(player.remainingTime());
-
-          player.pause();
-        }
-      }, 5000);
-    }
-
-    function waitSeconds(iMilliSeconds) {
-      var counter = 0
-        , start = new Date().getTime()
-        , end = 0;
-      while (counter < iMilliSeconds) {
-        end = new Date().getTime();
-        counter = end - start;
-      }
-    }
   </script>
 
 </body>
