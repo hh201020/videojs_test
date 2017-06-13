@@ -46,6 +46,24 @@
     var player = videojs(vid);
 
     player.on('ready', function () {
+      var bufferedTimeRange = player.buffered();
+
+      // number of different ranges of time have been buffered.
+      // Usually 1
+      var numberOfRanges = bufferedTimeRange.length;
+      console.log('Player numberOfRanges ? ' + numberOfRanges);
+
+      // Time in seconds when the first range starts.
+      // Usually 0
+      var firstRangeStart = bufferedTimeRange.start(0);
+
+      // Time in seconds when the first range ends
+      var firstRangeEnd = bufferedTimeRange.end(0);
+
+      // Length in seconds of the first time range
+      var firstRangeLength = firstRangeEnd - firstRangeStart;
+      console.log('Player firstRangeLength ? ' + firstRangeLength);
+      console.log('Player bufferedPercent ? ' + player.bufferedPercent());
 
       var howLoudIsIt = player.volume();
       player.volume(0.5);
