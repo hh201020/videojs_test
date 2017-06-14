@@ -42,19 +42,20 @@
   </video>
 
   <script>
+    var player = videojs('vid1');
 
-    var foo = new videojs.EventTarget();
-    var handleBar = function () {
-      console.log('bar was triggered');
-    };
+    player.on('pause', function () {
 
-    foo.on('bar', handleBar);
+      // Modals are temporary by default. They dispose themselves when they are
+      // closed; so, we can create a new one each time the player is paused and
+      // not worry about leaving extra nodes hanging around.
+      var modal = player.createModal('This is a modal!');
 
-    // This causes any `event listeners` for the `bar` event to get called
-    // see EventTarget#trigger for more information
-    foo.trigger('bar');
-    // logs 'bar was triggered'
-
+      // When the modal closes, resume playback.
+      modal.on('modalclose', function () {
+        player.play();
+      });
+    });
   </script>
 
 </body>
