@@ -42,34 +42,31 @@
   </video>
 
   <script>
-    var Plugin = videojs.getPlugin('plugin');
-
-    var ExamplePlugin = videojs.extend(Plugin, {
-
-      constructor: function (player, options) {
-        Plugin.call(this, player, options);
-
-        if (options.customClass) {
-          player.addClass(options.customClass);
-        }
-
-        player.on('playing', function () {
-          videojs.log('advanced plugin playback began! ' + options);
-        });
-      }
-    });
-    videojs.registerPlugin('examplePlugin', ExamplePlugin);
-
     var vid = document.getElementById("vid1");
     var player = videojs(vid);
 
-    var showPlugin = 'show plugin test';
-    player.examplePlugin(showPlugin);
+    var videoJsButtonClass = videojs.getComponent('Button');
+    var concreteButtonClass = videojs.extend(videoJsButtonClass, {
+
+      // The `init()` method will also work for constructor logic here, but it is 
+      // deprecated. If you provide an `init()` method, it will override the
+      // `constructor()` method!
+      constructor: function() {
+        videoJsButtonClass.call(this, player);
+      }, // notice the comma
+
+      handleClick: function(){
+        player.pause();
+        console.log('customized button clicked to stop the video');
+      }
+    });
+
+    var concreteButtonInstance = player.controlBar.addChild(new concreteButtonClass());
+        concreteButtonInstance.addClass("vjs-fluid");
 
     player.on('ready', function () {
-
       player.currentTime(40);
-      player.play();
+      //      player.play();
     })
   </script>
 
