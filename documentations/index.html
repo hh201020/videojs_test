@@ -42,22 +42,28 @@
   </video>
 
   <script>
-    function examplePlugin(options) {
+    var Plugin = videojs.getPlugin('plugin');
 
-      this.on('ended', function () {
-        console.log('ended ' + options);
-      });
+    var ExamplePlugin = videojs.extend(Plugin, {
 
-      this.on('playing', function () {
-        videojs.log('playback began!');
-      });
-    }
-    videojs.registerPlugin('examplePlugin', examplePlugin);
-    
+      constructor: function (player, options) {
+        Plugin.call(this, player, options);
+
+        if (options.customClass) {
+          player.addClass(options.customClass);
+        }
+
+        player.on('playing', function () {
+          videojs.log('advanced plugin playback began! ' + options);
+        });
+      }
+    });
+    videojs.registerPlugin('examplePlugin', ExamplePlugin);
+
     var vid = document.getElementById("vid1");
     var player = videojs(vid);
 
-    var  showPlugin = 'show plugin test';
+    var showPlugin = 'show plugin test';
     player.examplePlugin(showPlugin);
 
     player.on('ready', function () {
@@ -65,7 +71,6 @@
       player.currentTime(40);
       player.play();
     })
-
   </script>
 
 </body>
