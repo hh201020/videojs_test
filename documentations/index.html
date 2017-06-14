@@ -44,17 +44,22 @@
   <script>
     var player = videojs('vid1');
 
+    var ModalDialog = videojs.getComponent('ModalDialog');
+
+    var modal = new ModalDialog(player, {
+
+      // We don't want this modal to go away when it closes.
+      temporary: false
+    });
+
+    player.addChild(modal);
+
     player.on('pause', function () {
+      modal.open();
+    });
 
-      // Modals are temporary by default. They dispose themselves when they are
-      // closed; so, we can create a new one each time the player is paused and
-      // not worry about leaving extra nodes hanging around.
-      var modal = player.createModal('This is a modal!');
-
-      // When the modal closes, resume playback.
-      modal.on('modalclose', function () {
-        player.play();
-      });
+    player.on('play', function () {
+      modal.close();
     });
   </script>
 
