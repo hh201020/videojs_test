@@ -64,6 +64,23 @@
     var concreteButtonInstance = player.controlBar.addChild(new concreteButtonClass());
         concreteButtonInstance.addClass("vjs-fluid");
 
+    var Component = videojs.getComponent('ControlBar');
+    var myComponent = new Component(player);
+    var myButton = myComponent.addChild('Button', {
+      text: 'Press Me',
+      buttonChildExample: {
+        buttonChildOption: true
+      }
+    });
+    var myFunc = function() {
+      var myButton = this;
+      console.log('myFunc called');
+    };
+
+    myButton.on('click', myFunc);
+
+    player.controlBar.addChild(myButton);
+
     player.on('ready', function () {
       player.currentTime(40);
       //      player.play();
