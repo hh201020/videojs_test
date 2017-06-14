@@ -45,15 +45,24 @@
 
     var setup = function(player) {
         // initialize the foo plugin
-        player.foo();
+        foo();
     };
     var foo = function() {
-      console.log('the video started');
+      videojs.log('the video started');
     };
 
     videojs.registerPlugin('foo', foo);
     videojs.hook('setup', setup);
     var player = videojs('vid1', {autoplay: true, controls: true});
+    
+    var setupHooks = videojs.hooks('setup');
+
+    videojs.log.warn('setupHooks are ' + setupHooks);
+    var logHistory = videojs.log.history();
+    videojs.log('log history ' + logHistory);
+
+    videojs.log.history.disable();
+    videojs.log.history.clear();
 
   </script>
 
