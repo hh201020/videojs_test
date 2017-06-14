@@ -43,26 +43,17 @@
 
   <script>
 
-    var setup = function(player) {
-        // initialize the foo plugin
-        foo();
-    };
-    var foo = function() {
-      videojs.log('the video started');
+    var foo = new videojs.EventTarget();
+    var handleBar = function () {
+      console.log('bar was triggered');
     };
 
-    videojs.registerPlugin('foo', foo);
-    videojs.hook('setup', setup);
-    var player = videojs('vid1', {autoplay: true, controls: true});
-    
-    var setupHooks = videojs.hooks('setup');
+    foo.on('bar', handleBar);
 
-    videojs.log.warn('setupHooks are ' + setupHooks);
-    var logHistory = videojs.log.history();
-    videojs.log('log history ' + logHistory);
-
-    videojs.log.history.disable();
-    videojs.log.history.clear();
+    // This causes any `event listeners` for the `bar` event to get called
+    // see EventTarget#trigger for more information
+    foo.trigger('bar');
+    // logs 'bar was triggered'
 
   </script>
 
