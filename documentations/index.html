@@ -43,24 +43,17 @@
 
   <script>
 
-    var beforeSetup = function(videoEl, options) {
-      // videoEl.id will be some-id here, since that is what video.js was created with
-
-      videoEl.className += ' some-super-class';
-
-      // autoplay will be true here, since we passed in as such
-      if(options.autoplay) {
-        options.autoplay = false
-      }
-
-      // options that are returned here will be merged with old options
-      // in this example options will now be
-      // {autoplay: false, controls: true}
-      return options;
+    var setup = function(player) {
+        // initialize the foo plugin
+        player.foo();
+    };
+    var foo = function() {
+      console.log('the video started');
     };
 
-    videojs.hook('beforesetup', beforeSetup);
-    videojs('vid1', {autoplay: true, controls: true});
+    videojs.registerPlugin('foo', foo);
+    videojs.hook('setup', setup);
+    var player = videojs('vid1', {autoplay: true, controls: true});
 
   </script>
 
