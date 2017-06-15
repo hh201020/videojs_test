@@ -14,6 +14,7 @@
   <script src="../node_modules/videojs-flash/dist/videojs-flash.js"></script>
   <script src="../node_modules/videojs-settings-menu/dist/videojs-settings-menu.js"></script>
   <script src="../node_modules/videojs-playlist/dist/videojs-playlist.js"></script>
+  <script src="../node_modules/videojs-playlist-ui/dist/videojs-playlist-ui.js"></script>
 
   <!-- Set the location of the flash SWF -->
   <script>
@@ -42,33 +43,14 @@
     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/"
         target="_blank">supports HTML5 video</a></p>
   </video>
-
+    <div class="vjs-playlist">
+      <!--
+        The contents of this element will be filled based on the
+        currently loaded playlist
+      -->
+    </div>
   <script>
-    var player = videojs('vid1', {
-      'playbackRates': [0.5, 1, 1.5, 2],
-      controlBar: {
-        children: {
-          'playToggle': {},
-          'muteToggle': {},
-          'volumeControl': {},
-          'currentTimeDisplay': {},
-          'timeDivider': {},
-          'durationDisplay': {},
-          'liveDisplay': {},
-
-          'flexibleWidthSpacer': {},
-          'progressControl': {},
-
-          'settingsMenuButton': {
-            entries: [
-              'subtitlesButton',
-              'playbackRateMenuButton'
-            ]
-          },
-          'fullscreenToggle': {}
-        }
-      }
-    });
+    var player = videojs('vid1');
 
     player.playlist([{
       sources: [{
@@ -100,6 +82,9 @@
     player.playlist.currentItem(2);
 
     player.playlist.autoadvance(0);
+
+    player.playlistUi();
+
   </script>
 
 </body>
