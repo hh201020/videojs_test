@@ -17,6 +17,7 @@
   <script src="../node_modules/videojs-playlist-ui/dist/videojs-playlist-ui.js"></script>
   <script src="../node_modules/videojs-contextmenu/dist/videojs-contextmenu.js"></script>
   <script src="../node_modules/videojs-contextmenu-ui/dist/videojs-contextmenu-ui.js"></script>
+  <script src="../node_modules/videojs-overlay/dist/videojs-overlay.js"></script>
 
   <!-- Set the location of the flash SWF -->
   <script>
@@ -54,21 +55,30 @@
   <script>
     var player = videojs('vid1');
 
-    player.contextmenuUI({
-      content: [{
-
-        // A plain old link.
-        href: 'https://www.brightcove.com/',
-        label: 'Brightcove'
-      }, {
-
-        // A link with a listener. Its `href` will automatically be `#`.
-        label: 'Example Link',
-        listener: function () {
-          alert('you clicked the example link!');
-        }
-      }]
-    });
+    player.overlay({
+        content: 'Default overlay content',
+        debug: true,
+        overlays: [{
+          content: 'The video is playing!',
+          start: 'play',
+          end: 'pause'
+        }, {
+          start: 0,
+          end: 15,
+          align: 'bottom-left'
+        }, {
+          start: 15,
+          end: 30,
+          align: 'bottom'
+        }, {
+          start: 30,
+          end: 45,
+          align: 'bottom-right'
+        }, {
+          start: 20,
+          end: 'pause'
+        }]
+      });
 
   </script>
 
