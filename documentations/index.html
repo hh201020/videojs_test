@@ -15,6 +15,7 @@
   <script src="../node_modules/videojs-settings-menu/dist/videojs-settings-menu.js"></script>
   <script src="../node_modules/videojs-playlist/dist/videojs-playlist.js"></script>
   <script src="../node_modules/videojs-playlist-ui/dist/videojs-playlist-ui.js"></script>
+  <script src="../node_modules/videojs-contextmenu/dist/videojs-contextmenu.js"></script>
 
   <!-- Set the location of the flash SWF -->
   <script>
@@ -43,47 +44,19 @@
     <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/"
         target="_blank">supports HTML5 video</a></p>
   </video>
-    <div class="vjs-playlist">
-      <!--
+  <div class="vjs-playlist">
+    <!--
         The contents of this element will be filled based on the
         currently loaded playlist
       -->
-    </div>
+  </div>
   <script>
     var player = videojs('vid1');
 
-    player.playlist([{
-      sources: [{
-        src: 'http://media.w3.org/2010/05/sintel/trailer.mp4',
-        type: 'video/mp4'
-      }],
-      poster: 'http://media.w3.org/2010/05/sintel/poster.png'
-    }, {
-      sources: [{
-        src: 'http://vjs.zencdn.net/v/oceans.mp4',
-        type: 'video/mp4'
-      }],
-      poster: 'http://www.videojs.com/img/poster.jpg'
-    }, {
-      sources: [{
-        src: 'http://media.w3.org/2010/05/bunny/movie.mp4',
-        type: 'video/mp4'
-      }],
-      poster: 'http://media.w3.org/2010/05/bunny/poster.png'
-    }, {
-      sources: [{
-        src: 'http://media.w3.org/2010/05/video/movie_300.mp4',
-        type: 'video/mp4'
-      }],
-      poster: 'http://media.w3.org/2010/05/video/poster.png'
-    }]);
-
-    // Play through the playlist automatically.
-    player.playlist.currentItem(2);
-
-    player.playlist.autoadvance(0);
-
-    player.playlistUi();
+    player.contextmenu();
+    player.on('vjs-contextmenu', function () {
+      alert('open a context menu!');
+    });
 
   </script>
 
