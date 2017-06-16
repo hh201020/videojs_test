@@ -52,6 +52,7 @@
     "safe-json-parse": "4.0.0",
     "tsml": "1.0.1",
     "videojs-contextmenu": "^2.0.0",
+    "videojs-contextmenu-ui": "^4.0.0",
     "videojs-font": "2.0.0",
     "videojs-ie8": "1.1.2",
     "videojs-playlist": "^4.0.0",

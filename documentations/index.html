@@ -16,6 +16,7 @@
   <script src="../node_modules/videojs-playlist/dist/videojs-playlist.js"></script>
   <script src="../node_modules/videojs-playlist-ui/dist/videojs-playlist-ui.js"></script>
   <script src="../node_modules/videojs-contextmenu/dist/videojs-contextmenu.js"></script>
+  <script src="../node_modules/videojs-contextmenu-ui/dist/videojs-contextmenu-ui.js"></script>
 
   <!-- Set the location of the flash SWF -->
   <script>
@@ -34,7 +35,7 @@
     <pre>open http://localhost:9999/sandbox/index.html</pre>
   </div>
 
-  <video id="vid1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png"
+  <video id="vid1" class="video-js vjs-default-skin" preload="auto" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png"
     data-setup='{}'>
     <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
     <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
@@ -53,9 +54,20 @@
   <script>
     var player = videojs('vid1');
 
-    player.contextmenu();
-    player.on('vjs-contextmenu', function () {
-      alert('open a context menu!');
+    player.contextmenuUI({
+      content: [{
+
+        // A plain old link.
+        href: 'https://www.brightcove.com/',
+        label: 'Brightcove'
+      }, {
+
+        // A link with a listener. Its `href` will automatically be `#`.
+        label: 'Example Link',
+        listener: function () {
+          alert('you clicked the example link!');
+        }
+      }]
     });
 
   </script>
