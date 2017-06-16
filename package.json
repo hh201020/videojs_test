@@ -62,6 +62,7 @@
     "videojs-playlist-ui": "^3.0.5",
     "videojs-settings-menu": "0.0.2",
     "videojs-vtt.js": "0.12.4",
+    "videojs-youtube": "^2.4.0",
     "xhr": "2.4.0"
   },
   "devDependencies": {
