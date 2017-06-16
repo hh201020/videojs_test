@@ -10,6 +10,8 @@
 
   <!-- Load the source files -->
   <link href="../build/temp/video-js.css" rel="stylesheet" type="text/css">
+  <link href="../node_modules/videojs-contextmenu-ui/dist/videojs-contextmenu-ui.css" rel="stylesheet">
+
   <script src="../dist/video.js"></script>
   <script src="../node_modules/videojs-flash/dist/videojs-flash.js"></script>
   <script src="../node_modules/videojs-settings-menu/dist/videojs-settings-menu.js"></script>
@@ -35,7 +37,7 @@
     <pre>open http://localhost:9999/sandbox/index.html</pre>
   </div>
 
-  <video id="vid1" class="video-js vjs-default-skin" preload="auto" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png"
+  <video id="vid1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png"
     data-setup='{}'>
     <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
     <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
