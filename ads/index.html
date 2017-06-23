@@ -9,6 +9,8 @@
   <!-- Load local ads plugin. -->
   <link rel="stylesheet" href="../node_modules/videojs-contrib-ads/dist/videojs.ads.css">
   <script src="../node_modules/videojs-contrib-ads/dist/videojs.ads.js"></script>
+  <script src="../node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.js"></script>
+
   <!-- Load example ads integraiton. -->
   <script src="example-integration.js"></script>
   <link rel="stylesheet" href="app.css">
@@ -28,9 +30,12 @@
     poster="http://vjs.zencdn.net/v/oceans.png"
     autoplay
     controls>
+    <source src="https://storage.googleapis.com/vhost-stage.ntd.tv/2017/0519/591f5ccdbb601760f1726688/playlist.m3u8" type="application/x-mpegURL">
+<!--
+    <source src="https://vhost-stage.ntd.tv/2017/0524/5925c6d946e0fb001e26a044/playlist.m3u8" type="application/x-mpegURL">
     <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
     <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm' />
-    <source src="http://vjs.zencdn.net/v/oceans.ogv" type='video/ogg' />
+    <source src="http://vjs.zencdn.net/v/oceans.ogv" type='video/ogg' />-->
   </video>
 
   <h2>Set Src programmatically</h2>
