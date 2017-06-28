@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <!-- Load dependent stylesheets. -->
+    <link href="../node_modules/video.js/dist/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="../node_modules/videojs-contrib-ads/dist/videojs.ads.css" />
+    <link rel="stylesheet" href="../node_modules/videojs-ima/src/videojs.ima.css" />
+  </head>
+
+  <body>
+    <video id="content_video" class="video-js vjs-default-skin"
+        controls preload="auto" width="640" height="480">
+<!--    <source src="https://storage.googleapis.com/vhost-stage.ntd.tv/2017/0519/591f5ccdbb601760f1726688/playlist.m3u8" type="application/x-mpegURL">
+-->    <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
+
+<!--      <source src="PATH_TO_YOUR_CONTENT_VIDEO" type="YOUR_CONTENT_VIDEO_TYPE" />
+-->    </video>
+    <!-- Load dependent scripts 
+    <script src="http://vjs.zencdn.net/4.5/video.js"></script>
+-->
+    <script src="../node_modules/video.js/dist/video.js"></script>
+    <script src="http://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+    <script src="../node_modules/videojs-contrib-ads/dist/videojs.ads.js"></script>
+    <script src="../node_modules/videojs-ima/src/videojs.ima.js"></script>
+    <script src="player.js"></script>
+  </body>
+</html>
